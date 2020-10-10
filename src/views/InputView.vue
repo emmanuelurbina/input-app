@@ -46,7 +46,7 @@
           </tr>
 
           <tr>
-            <td>Max width</td>
+            <td>Full width</td>
             <td>
               <input type="checkbox" v-model="max_width" />
             </td>
@@ -109,8 +109,13 @@ export default {
 thead {
   text-align: left;
 }
-
+input[type=checkbox]{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
 .select__input {
+  cursor: pointer;
   outline: none;
   padding: 0.6em 1em;
   width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="input__content">
     <div class="group__input">
-      <input type="text" :class="[style_input, style_size, max_width ? 'max__width' : '' ]"  />
+      <input placeholder="placeholder" type="text" :class="[style_input, style_size, max_width ? 'max__width' : '' ]"  />
       <label class="label__input"> {{ label }} </label>
     </div>
   </div>
