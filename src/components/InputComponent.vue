@@ -1,7 +1,7 @@
 <template>
   <div class="input__content">
     <div class="group__input">
-      <input type="text" :class="[style_input]"  />
+      <input type="text" :class="[style_input, style_size, max_width ? 'max__width' : '' ]"  />
       <label class="label__input"> {{ label }} </label>
     </div>
   </div>
@@ -10,7 +10,9 @@
 
 <script>
 export default {
-  props: ["style_input"],
+  props: ["style_input",
+          "style_size",
+          "max_width"],
   data() {
     return {
       label: "Label",
@@ -100,6 +102,21 @@ sm
   color: #D32F2F;
 }
 
+.input__md {
+  padding: .8em 1em !important;
+}
+.input__sm {
+  padding: 0.4em 1em !important;
+}
+.input__lg{
+  padding: 1em 1.2em !important;
+}
 
 
+
+@media screen and (max-width: 600px) {
+  .group__input {
+    width: 100%;
+  }
+}
 </style>

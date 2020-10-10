@@ -26,4 +26,10 @@ export default {
 #app {
   margin: 5em;
 }
+
+@media screen and (max-width: 600px) {
+  #app {
+    margin: 2em 5px;
+  }
+}
 </style>

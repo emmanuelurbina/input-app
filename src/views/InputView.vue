@@ -1,6 +1,10 @@
 <template>
   <div class="content">
-    <inputComponent :style_input="type" />
+    <inputComponent
+      :style_input="type"
+      :style_size="size"
+      :max_width="max_width"
+    />
 
     <article class="table__content">
       <table class="table">
@@ -13,15 +17,38 @@
             <td>Type input</td>
             <td>
               <select class="select__input" @click="typeChange">
-                <option value="default" selected>Select Size</option>
+                <option value="default" selected>Select type</option>
                 <option
-                  v-for="(type,index) in types"
+                  v-for="(type, index) in types"
                   :key="index"
                   :value="type"
                 >
                   {{ type }}
                 </option>
               </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Size input</td>
+            <td>
+              <select class="select__input" @click="sizeChange">
+                <option value="default" selected>Select size</option>
+                <option
+                  v-for="(size, index) in sizes"
+                  :key="index"
+                  :value="index"
+                >
+                  {{ size }}
+                </option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Max width</td>
+            <td>
+              <input type="checkbox" v-model="max_width" />
             </td>
           </tr>
         </tbody>
@@ -37,10 +64,14 @@ import inputComponent from "@/components/InputComponent.vue";
 export default {
   data() {
     return {
-      types: [
-          "default",
-          "error"
-      ],  
+      types: ["default", "error"],
+      sizes: {
+        input__sm: "Slim",
+        input__md: "medium",
+        input__lg: "Large",
+      },
+      max_width: false,
+      size: "",
       type: "default",
     };
   },
@@ -48,10 +79,13 @@ export default {
     inputComponent,
   },
   methods: {
-      typeChange: function(){
-          this.type = event.target.value;
-      }
-  }
+    typeChange: function () {
+      this.type = event.target.value;
+    },
+    sizeChange: function () {
+      this.size = event.target.value;
+    },
+  },
 };
 </script>
 
@@ -73,14 +107,20 @@ export default {
   padding: 5px;
 }
 thead {
-    text-align: left;
+  text-align: left;
 }
 
 .select__input {
-    outline: none;
-    padding: .6em 1em;
+  outline: none;
+  padding: 0.6em 1em;
+  width: 100%;
+  border-radius: 8px;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 600px) {
+  .table__content {
     width: 100%;
-    border-radius: 8px;
-    text-transform: capitalize;
+  }
 }
 </style>
